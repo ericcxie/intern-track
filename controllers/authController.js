@@ -10,8 +10,17 @@ const register = async (req, res) => {
   }
 
   const user = await User.create({ name, email, password });
-  user.createJWT();
-  res.status(StatusCodes.OK).json({ user });
+  const token = user.createJWT();
+  res.status(StatusCodes.OK).json({
+    user: {
+      email: user.email,
+      lastName: user.lastName,
+      location: user.location,
+      name: user.name,
+    },
+    token,
+    location: user.location,
+  });
 
   const userAlreadyExists = await User.findOne({ email });
   if (userAlreadyExists) {
