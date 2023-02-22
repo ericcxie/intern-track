@@ -29,6 +29,12 @@ const Register = () => {
       displayAlert();
       return;
     }
+    const currentUser = { name, email, password };
+    if (isMember) {
+      console.log("already a member");
+    } else {
+      registerUser(currentUser);
+    }
   };
 
   return (
@@ -61,7 +67,7 @@ const Register = () => {
           value={values.password}
           handleChange={handleChange}
         />
-        <button type="submit" className="btn btn-block">
+        <button type="submit" className="btn btn-block" disabled={isLoading}>
           submit
         </button>
         <p>
