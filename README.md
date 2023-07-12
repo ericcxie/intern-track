@@ -1,4 +1,4 @@
-# Career Snap
+# InternTrack
 *An interactive dashboard for keeping track of internship applications*
 
 #### Run The App Locally
